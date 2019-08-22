@@ -7,7 +7,6 @@ class SessionController {
   async store(req, res) {
     // validacoes
     const schema = Yup.object().shape({
-      name: Yup.string().required(),
       email: Yup.string()
         .email()
         .required(),
