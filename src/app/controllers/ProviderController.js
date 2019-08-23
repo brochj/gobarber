@@ -11,7 +11,7 @@ class ProviderController {
         {
           model: File,
           as: 'avatar',
-          attributes: ['name', 'path', 'url'], //url 'e VIRTUAL, ver no model File
+          attributes: ['name', 'path', 'url'], // url 'e VIRTUAL, ver no model File
         },
       ],
     });

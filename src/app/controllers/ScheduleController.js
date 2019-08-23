@@ -1,11 +1,8 @@
-import * as Yup from 'yup';
 import { startOfDay, endOfDay, parseISO } from 'date-fns';
 import { Op } from 'sequelize';
 
 import Appointment from '../models/Appointment';
 import User from '../models/User';
-import File from '../models/File';
-import Appointments from '../models/Appointment';
 
 class ScheduleController {
   async index(req, res) {
@@ -20,7 +17,7 @@ class ScheduleController {
     const { date } = req.query;
     const parsedDate = parseISO(date);
 
-    const appointments = await Appointments.findAll({
+    const appointments = await Appointment.findAll({
       where: {
         provider_id: req.userId,
         canceled_at: null,
