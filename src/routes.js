@@ -5,6 +5,7 @@ import multerConfig from './config/multer';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
+import ProviderController from './app/controllers/ProviderController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -18,6 +19,9 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware); // todas as rotas abaixo terao esse middleware
 
 routes.put('/users', UserController.update);
+
+// faz a listagem de providers
+routes.get('/providers', ProviderController.index);
 
 // single -  um arquivo, file- nome do campo que vai ser enviado na requisicao
 routes.post('/files', upload.single('file'), FileController.store);
