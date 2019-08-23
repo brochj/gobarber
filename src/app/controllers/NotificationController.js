@@ -24,6 +24,18 @@ class NotificationController {
 
     return res.json(notifications);
   }
+
+  async update(req, res) {
+    // buscando a notifacao no banco de dados
+    // const notification = await Notification.findById(req.params.id)
+    const notification = await Notification.findByIdAndUpdate(
+      req.params.id,
+      { read: true },
+      { new: true } // retorna a notificacao atualizada
+    );
+
+    return res.json(notification);
+  }
 }
 
 export default new NotificationController();

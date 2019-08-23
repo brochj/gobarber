@@ -32,6 +32,7 @@ routes.post('/appointments', AppointmentController.store);
 routes.get('/schedules', ScheduleController.index);
 
 routes.get('/notifications', NotificationController.index);
+routes.put('/notifications/:id', NotificationController.update);
 
 // single -  um arquivo, file- nome do campo que vai ser enviado na requisicao
 routes.post('/files', upload.single('file'), FileController.store);
