@@ -24,6 +24,7 @@ routes.put('/users', UserController.update);
 // faz a listagem de providers
 routes.get('/providers', ProviderController.index);
 
+routes.get('/appointments', AppointmentController.index);
 routes.post('/appointments', AppointmentController.store);
 
 // single -  um arquivo, file- nome do campo que vai ser enviado na requisicao
