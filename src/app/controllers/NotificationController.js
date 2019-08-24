@@ -26,8 +26,10 @@ class NotificationController {
   }
 
   async update(req, res) {
+    /**
+     * Marcar notificacao como lida
+     */
     // buscando a notifacao no banco de dados
-    // const notification = await Notification.findById(req.params.id)
     const notification = await Notification.findByIdAndUpdate(
       req.params.id,
       { read: true },
