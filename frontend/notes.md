@@ -1,75 +1,46 @@
-# Configurando rotas com history
+# Reactotron no ReactJS
+
+```bash
+yarn add reactotron-react-js
+```
 
 ## Estrutura
 ```
 ├── src
 │   ├── App.js
+│   ├── config
+│   │   └── ReactotronConfig.js
 │   ├── index.js
-│   ├── pages
-│   │   ├── Dashboard
-│   │   │   └── index.js
-│   │   ├── Profile
-│   │   │   └── index.js
-│   │   ├── SignIn
-│   │   │   └── index.js
-│   │   └── SignUp
-│   │       └── index.js
-│   ├── routes
-│   │   └── index.js
-│   └── services
-│       └── history.js
 ```
 
-## Dependências
-```bash
-yarn add history react-router-dom
-```
-
-## history.js
+## ReacotoronConfig.js
 
 ```js
-// history.js
-import { createBrowserHistory } from 'history';
+import Reactotron from 'reactotron-react-js';
 
-const history = createBrowserHistory();
+if (process.env.NODE_ENV === 'development') {
+  const tron = Reactotron.configure().connect();
 
-export default history;
-```
-## routes/index.js
-
-```js
-// routes/index.js
-import React from 'react';
-import { Router } from 'react-router-dom';
-
-import Routes from './routes';
-import history from './services/history';
-
-export default function src() {
-  return (
-    <Router history={history}>
-      <Routes />
-    </Router>
-  );
+  tron.clear();
+  console.tron = tron;
 }
 ```
 
-## app.js
+## Utilizando
+- Fazer o import do Reactotron no arquivo de entrada do app `src/index.js`
 
 ```js
-// app.js
-import React from 'react';
-import { Router } from 'react-router-dom';
-
-import Routes from './routes';
-import history from './services/history';
-
-export default function src() {
-  return (
-    <Router history={history}>
-      <Routes />
-    </Router>
-  );
-}
+import "./config/ReactotronConfig";
 ```
+
+- Para utilizar é apenas um
+
+```js
+console.tron.log("Mensagem");
+```
+
+
+# Rotas Privadas
+
+
 
