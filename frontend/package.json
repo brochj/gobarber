@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "history": "^4.10.1",
+    "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -16,7 +17,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "p": "git push origin master"
   },
   "eslintConfig": {
     "extends": "react-app"
