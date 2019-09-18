@@ -291,3 +291,6 @@ import AuthLayout from '~/pages/_layouts/auth';
 
 # // TODO fazer o tutorial de redux + redux-saga  da aula "configurando store" do modulo gobarber web
 
+# Autenticação com redux-saga
+
+- Definir uma action
