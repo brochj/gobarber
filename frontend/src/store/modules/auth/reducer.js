@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
+// TODO ADD NAS NOTES A REFATORACAO DO PRODUCE POR VOLTA DO SWITCH
 export default function auth(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
