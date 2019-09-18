@@ -293,4 +293,102 @@ import AuthLayout from '~/pages/_layouts/auth';
 
 # Autenticação com redux-saga
 
-- Definir uma action
+# Persistindo dados
+
+```bash
+yarn add redux-persist
+```
+
+- Em `store/persistReducers.js`
+
+```js
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+
+export default reducers => {
+  const persistedReducer = persistReducer(
+    {
+      key: 'gobarber',
+      storage,
+      whitelist: ['auth', 'user'],
+    },
+    reducers
+  );
+
+  return persistedReducer;
+};
+```
+
+- O `whitelist` é quais reducer que ficarão armazenados
+- O `storage` lida com o seleciona o sotrage de forma automatica. Exemplo, se a aplicação for web, será salve no `localStorage` e se for no react-native será salvo no `AsyncStorage`.
+
+
+- Em `store/index.js`
+```js
+import { persistStore } from 'redux-persist'; // ADD
+import createSagaMiddleware from 'redux-saga';
+
+import createStore from './createStore';
+import persistedReducers from './persistReducers'; // ADD
+
+import rootReducer from './modules/rootReducer';
+import rootSaga from './modules/rootSaga';
+
+const sagaMonitor =
+  process.env.NODE_ENV === 'development'
+    ? console.tron.createSagaMonitor()
+    : null;
+
+const sagaMiddleware = createSagaMiddleware({
+  sagaMonitor,
+});
+
+const middlewares = [sagaMiddleware];
+
+const store = createStore(persistedReducers(rootReducer), middlewares); //MOD
+const persistor = persistStore(store); //ADD
+
+sagaMiddleware.run(rootSaga);
+
+export { store, persistor }; // MOD
+```
+
+- Em `App.js` e `Route.js` mudar o import de store para
+
+```js
+import { store } from './store';
+
+```
+
+- Em `App.js`
+- O `PersistGate` irá verificar os o reducer que estão salvos no local storage da aplicação, pegar os dados.
+
+```js
+import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react'; //ADD
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import './config/ReactotronConfig';
+
+import GlobalStyle from './styles/global';
+
+import { store, persistor } from './store'; // MOD
+
+import Routes from './routes';
+import history from './services/history';
+
+export default function src() {
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}> {/* ADD */}
+        <Router history={history}>
+          <Routes />
+          <GlobalStyle />
+        </Router>
+      </PersistGate> {/* ADD */}
+    </Provider>
+  );
+}
+
+```
