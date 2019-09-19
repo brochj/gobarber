@@ -392,3 +392,44 @@ export default function src() {
 }
 
 ```
+
+# Requisicoes autenticadas
+
+```js
+api.defaults.headers.Authorization = `Bearer ${token}`;
+
+```
+- No saga de autenticação
+
+```js
+export function* signIn({ payload }) {
+  try {
+    ...
+    api.defaults.headers.Authorization = `Bearer ${token}`; //ADD
+
+    // put é para disparar actions
+    yield put(signInSuccess(token, user));
+
+    history.push('/dashboard');
+  } catch (eer) {
+    ...
+  }
+}
+...
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
+// all é pra ficar ouvindo as actions
+export default all([
+  takeLatest('persist/REHYDRATE', setToken),
+  takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+]);
+```

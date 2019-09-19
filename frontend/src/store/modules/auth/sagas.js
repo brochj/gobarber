@@ -22,6 +22,9 @@ export function* signIn({ payload }) {
       yield put(signFailure());
       return;
     }
+
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
     // put é para disparar actions
     yield put(signInSuccess(token, user));
 
@@ -45,8 +48,19 @@ export function* signUp({ payload }) {
   }
 }
 
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
 // all é pra ficar ouvindo as actions
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 ]);
