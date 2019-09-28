@@ -7,6 +7,7 @@ import { Container } from './styles';
 import AvatarInput from './AvartInput';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
+import { signOut } from '~/store/modules/auth/actions';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ export default function Profile() {
 
         <button type="submit">Atualizar Perfil</button>
       </Form>
-      <button type="button">Sair do goBarber</button>
+      <button type="button" onClick={() => dispatch(signOut())}>
+        Sair do goBarber
+      </button>
     </Container>
   );
 }
