@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import {signInRequest} from '~/store/modules/auth/actions';
 
+import Background from '~/components/Background/index';
+
 export default function SignIn({navigation}) {
   const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ export default function SignIn({navigation}) {
   const passwordRef = useRef(null);
 
   return (
-    <View style={styles.container}>
+    <Background>
       <View style={styles.body}>
         <Text style={styles.labelTxt}>Email</Text>
         <TextInput
@@ -71,7 +73,7 @@ export default function SignIn({navigation}) {
           </Text>
         </View>
       </View>
-    </View>
+    </Background>
   );
 }
 

@@ -1,12 +1,3 @@
-// import React from 'react';
-// import {Text} from 'react-native';
-
-// // import { Container } from './styles';
-
-// export default function src() {
-//   return <Text>Opa</Text>;
-// }
-
 import React from 'react';
 import {StatusBar, YellowBox} from 'react-native';
 import './config/ReactotronConfig';

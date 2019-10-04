@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import Background from '~/components/Background/index';
 
 export default function SignUp({navigation}) {
   const [email, setEmail] = useState('brochj@gmail.com');
@@ -15,7 +16,7 @@ export default function SignUp({navigation}) {
   const passwordInput = useRef(null);
 
   return (
-    <View style={styles.container}>
+    <Background>
       <View style={styles.body}>
         <Text style={styles.labelTxt}>Email</Text>
         <TextInput
@@ -56,7 +57,7 @@ export default function SignUp({navigation}) {
           </Text>
         </View>
       </View>
-    </View>
+    </Background>
   );
 }
 
