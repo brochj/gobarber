@@ -21,7 +21,7 @@ export default function AvartInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+  }, []); // eslint-disable-line
 
   async function handleChange(e) {
     const data = new FormData();
