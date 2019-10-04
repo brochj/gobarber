@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default function SignUp({ navigation }) {
+export default function SignUp({navigation}) {
   const [email, setEmail] = useState('brochj@gmail.com');
   const [password, setPassword] = useState('123456');
 
@@ -46,14 +46,12 @@ export default function SignUp({ navigation }) {
         <View style={styles.loginView}>
           <Text
             style={styles.loginTxt}
-            onPress={() => navigation.navigate('SignIn')}
-          >
+            onPress={() => navigation.navigate('SignIn')}>
             Já tem uma conta?
           </Text>
           <Text
             style={[styles.loginTxt, styles.loginWordTxt]}
-            onPress={() => navigation.navigate('SignIn')}
-          >
+            onPress={() => navigation.navigate('SignIn')}>
             Entrar
           </Text>
         </View>

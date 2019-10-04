@@ -1,5 +1,5 @@
-import { Alert } from 'react-native';
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import {Alert} from 'react-native';
+import {call, put, all, takeLatest} from 'redux-saga/effects';
 
 import {
   createMealSuccess,
@@ -10,12 +10,12 @@ import {
 
 import api from '~/services/api';
 
-export function* createMeal({ payload }) {
+export function* createMeal({payload}) {
   if (!payload) return;
 
   const {
-    meal: { calorie },
-    meal: { title },
+    meal: {calorie},
+    meal: {title},
     dietPlanId,
   } = payload;
 
@@ -29,20 +29,20 @@ export function* createMeal({ payload }) {
   } catch (err) {
     Alert.alert(
       'Error',
-      `Falha na criação da refeição, verifique seus dados ${err}`
+      `Falha na criação da refeição, verifique seus dados ${err}`,
     );
 
     yield put(createMealFailure());
   }
 }
 
-export function* createMultipleMeals({ payload }) {
+export function* createMultipleMeals({payload}) {
   if (!payload) return;
 
-  const { meals, dietPlanId } = payload;
+  const {meals, dietPlanId} = payload;
 
   try {
-    const sanitizedMeals = meals.map(({ title, calorie }) => ({
+    const sanitizedMeals = meals.map(({title, calorie}) => ({
       title,
       calorie,
     }));
@@ -54,14 +54,14 @@ export function* createMultipleMeals({ payload }) {
   } catch (err) {
     Alert.alert(
       'Error',
-      `Falha na criação de múltiplas refeições, verifique seus dados ${err}`
+      `Falha na criação de múltiplas refeições, verifique seus dados ${err}`,
     );
 
     yield put(createMealFailure());
   }
 }
 
-export function* getMeals({ payload }) {
+export function* getMeals({payload}) {
   if (!payload) return;
 
   try {

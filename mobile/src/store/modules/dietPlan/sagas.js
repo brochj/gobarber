@@ -1,5 +1,5 @@
-import { Alert } from 'react-native';
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import {Alert} from 'react-native';
+import {call, put, all, takeLatest} from 'redux-saga/effects';
 
 import {
   createDietPlanSuccess,
@@ -8,7 +8,7 @@ import {
 
 import api from '~/services/api';
 
-export function* create({ payload }) {
+export function* create({payload}) {
   if (!payload) return;
 
   try {
@@ -19,7 +19,7 @@ export function* create({ payload }) {
   } catch (err) {
     Alert.alert(
       'Error',
-      `Falha na criação do plano de dieta, verifique seus dados ${err}`
+      `Falha na criação do plano de dieta, verifique seus dados ${err}`,
     );
 
     yield put(createDietPlanFailure());

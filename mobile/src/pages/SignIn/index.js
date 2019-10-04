@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -9,9 +9,9 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { signInRequest } from '~/store/modules/auth/actions';
+import {signInRequest} from '~/store/modules/auth/actions';
 
-export default function SignIn({ navigation }) {
+export default function SignIn({navigation}) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('brochj@gmail.com');
@@ -61,14 +61,12 @@ export default function SignIn({ navigation }) {
         <View style={styles.loginView}>
           <Text
             style={styles.loginTxt}
-            onPress={() => navigation.navigate('SignUp')}
-          >
+            onPress={() => navigation.navigate('SignUp')}>
             Criar conta gratuita
           </Text>
           <Text
             style={[styles.loginTxt, styles.loginWordTxt]}
-            onPress={() => navigation.navigate('SignUp')}
-          >
+            onPress={() => navigation.navigate('SignUp')}>
             Cadastrar
           </Text>
         </View>

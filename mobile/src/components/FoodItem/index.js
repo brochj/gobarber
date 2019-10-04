@@ -13,7 +13,7 @@ import {
   Divider,
 } from './styles';
 
-export default function FoodItem({ data }) {
+export default function FoodItem({data}) {
   return (
     <>
       <Container>
@@ -21,10 +21,8 @@ export default function FoodItem({ data }) {
         <Content>
           <Title numberOfLines={1}>{data.title}</Title>
           <AmountView>
-            <Amount style={{ textAlignVertical: 'bottom' }}>
-              {data.amount}
-            </Amount>
-            <Unit style={{ textAlignVertical: 'bottom' }}>{data.unit}</Unit>
+            <Amount style={{textAlignVertical: 'bottom'}}>{data.amount}</Amount>
+            <Unit style={{textAlignVertical: 'bottom'}}>{data.unit}</Unit>
           </AmountView>
         </Content>
         <CalorieView>

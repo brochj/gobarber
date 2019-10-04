@@ -1,7 +1,7 @@
 export function createMealRequest(meal, dietPlanId) {
   return {
     type: '@meal/CREATE_MEAL_REQUEST',
-    payload: { meal, dietPlanId },
+    payload: {meal, dietPlanId},
   };
 }
 
@@ -15,7 +15,7 @@ export function createMealSuccess(meal) {
 export function createMultipleMealsRequest(meals, dietPlanId) {
   return {
     type: '@meal/CREATE_MULTIPLE_MEALS_REQUEST',
-    payload: { meals, dietPlanId },
+    payload: {meals, dietPlanId},
   };
 }
 
