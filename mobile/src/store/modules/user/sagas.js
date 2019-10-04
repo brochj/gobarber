@@ -1,11 +1,11 @@
-import {Alert} from 'react-native';
-import {call, put, all, takeLatest} from 'redux-saga/effects';
+import { Alert } from 'react-native';
+import { call, put, all, takeLatest } from 'redux-saga/effects';
 
-import {updateSuccess, updateFailure} from '~/store/modules/user/actions';
+import { updateSuccess, updateFailure } from '~/store/modules/user/actions';
 
 import api from '~/services/api';
 
-export function* update({payload}) {
+export function* update({ payload }) {
   if (!payload) return;
 
   console.tron.log(payload);

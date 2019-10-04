@@ -1,7 +1,7 @@
 export function createDishRequest(dish, dietPlanId, mealId) {
   return {
     type: '@dish/CREATE_DISH_REQUEST',
-    payload: {dish, dietPlanId, mealId},
+    payload: { dish, dietPlanId, mealId },
   };
 }
 
@@ -15,7 +15,7 @@ export function createDishSuccess(dish) {
 export function getDishesRequest(dietPlanId, mealId) {
   return {
     type: '@dish/GET_DISHES_REQUEST',
-    payload: {dietPlanId, mealId},
+    payload: { dietPlanId, mealId },
   };
 }
 
@@ -35,7 +35,7 @@ export function createDishFailure() {
 export function deleteDishRequest(dietPlanId, mealId, dishId) {
   return {
     type: '@dish/DELETE_DISH_REQUEST',
-    payload: {dietPlanId, mealId, dishId},
+    payload: { dietPlanId, mealId, dishId },
   };
 }
 

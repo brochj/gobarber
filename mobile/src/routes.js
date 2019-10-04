@@ -1,4 +1,4 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 // import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import SignIn from '~/pages/SignIn';
@@ -11,5 +11,5 @@ export default (isSigned = false) =>
     createSwitchNavigator({
       SignIn,
       SignUp,
-    }),
+    })
   );
