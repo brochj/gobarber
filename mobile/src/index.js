@@ -1,11 +1,11 @@
 import React from 'react';
-import {StatusBar, YellowBox} from 'react-native';
+import { StatusBar, YellowBox } from 'react-native';
 import './config/ReactotronConfig';
 
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import {store, persistor} from './store';
+import { store, persistor } from './store';
 import App from '~/App';
 
 YellowBox.ignoreWarnings([
@@ -18,7 +18,7 @@ export default function src() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        <StatusBar backgroundColor="#7159c1" barStyle="light-content" />
         <App />
       </PersistGate>
     </Provider>

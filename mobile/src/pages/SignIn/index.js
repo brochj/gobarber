@@ -1,21 +1,14 @@
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import {useDispatch, useSelector} from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native';
-import {signInRequest} from '~/store/modules/auth/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background/index';
-import Button from '~/components/Button/index';
-import Input from '~/components/Input/index';
+import logo from '~/assets/logo.png';
+import { Container, Form, FormInput, SubmitButton } from './styles';
 
-export default function SignIn({navigation}) {
+export default function SignIn({ navigation }) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('brochj@gmail.com');
@@ -27,92 +20,54 @@ export default function SignIn({navigation}) {
     dispatch(signInRequest(email, password));
   }
 
-  const passwordRef = useRef(null);
+  const passwordRef = useRef();
 
   return (
     <Background>
-      <Text style={styles.labelTxt}>Email</Text>
-      <Input
-        autoFocus
-        blurOnSubmit={false}
-        placeholder="seu-email@email.com"
-        returnKeyType="next"
-        keyboardType="email-address"
-        value={email}
-        onChangeText={text => setEmail(text)}
-        onSubmitEditing={() => passwordRef.current.focus()}
-      />
-      <Text style={styles.labelTxt}>Senha</Text>
-      <Input
-        ref={passwordRef}
-        secureTextEntry
-        maxLength={20}
-        placeholder="Digite uma senha"
-        value={password}
-        onChangeText={text => setPassword(text)}
-        onSubmitEditing={() => {}}
-      />
-      <Button loading={loading} onPress={handleSignIn}>
-        Entrar
-      </Button>
-      <View style={styles.loginView}>
-        <Text
-          style={styles.loginTxt}
-          onPress={() => navigation.navigate('SignUp')}>
-          Criar conta gratuita
-        </Text>
-        <Text
-          style={[styles.loginTxt, styles.loginWordTxt]}
-          onPress={() => navigation.navigate('SignUp')}>
-          Cadastrar
-        </Text>
-      </View>
+      <Container>
+        <Image source={logo} />
+        <Form>
+          <FormInput
+            icon="mail-outline"
+            autoCorrect={false}
+            autoCapitalize="none"
+            autoFocus
+            blurOnSubmit={false}
+            placeholder="Digite seu email"
+            returnKeyType="next"
+            keyboardType="email-address"
+            value={email}
+            onChangeText={text => setEmail(text)}
+            onSubmitEditing={() => passwordRef.current.focus()}
+          />
+          <FormInput
+            ref={passwordRef}
+            icon="lock-outline"
+            secureTextEntry
+            maxLength={20}
+            placeholder="Digite uma senha"
+            value={password}
+            onChangeText={text => setPassword(text)}
+            onSubmitEditing={handleSignIn}
+          />
+          <SubmitButton loading={loading} onPress={handleSignIn}>
+            Acessar
+          </SubmitButton>
+          <View style={styles.loginView}>
+            <Text
+              style={styles.loginTxt}
+              onPress={() => navigation.navigate('SignUp')}
+            >
+              Criar conta gratuita
+            </Text>
+          </View>
+        </Form>
+      </Container>
     </Background>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  body: {
-    justifyContent: 'center',
-    margin: 10,
-    padding: 10,
-    backgroundColor: 'rgba(0,0,0,.5)',
-    borderRadius: 5,
-  },
-  input: {
-    height: 50,
-    marginBottom: 10,
-    padding: 5,
-    paddingHorizontal: 20,
-    backgroundColor: 'rgba(255,255,255,.80)',
-    color: '#196A65',
-    fontSize: 17,
-  },
-  inputEmail: {
-    borderTopLeftRadius: 15,
-  },
-  inputSenha: {},
-  labelTxt: {
-    color: 'white',
-    fontSize: 22,
-  },
-  buttonCadastro: {
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#196A65',
-    borderBottomRightRadius: 15,
-  },
-  buttonTxt: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
   loginView: {
     flexDirection: 'row',
     justifyContent: 'center',
