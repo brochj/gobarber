@@ -12,6 +12,8 @@ import {
 import {signInRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background/index';
+import Button from '~/components/Button/index';
+import Input from '~/components/Input/index';
 
 export default function SignIn({navigation}) {
   const dispatch = useDispatch();
@@ -29,49 +31,41 @@ export default function SignIn({navigation}) {
 
   return (
     <Background>
-      <View style={styles.body}>
-        <Text style={styles.labelTxt}>Email</Text>
-        <TextInput
-          style={[styles.input, styles.inputEmail]}
-          autoFocus
-          blurOnSubmit={false}
-          placeholder="seu-email@email.com"
-          returnKeyType="next"
-          keyboardType="email-address"
-          value={email}
-          onChangeText={text => setEmail(text)}
-          onSubmitEditing={() => passwordRef.current.focus()}
-        />
-        <Text style={styles.labelTxt}>Senha</Text>
-        <TextInput
-          ref={passwordRef}
-          style={[styles.input, styles.inputSenha]}
-          secureTextEntry
-          maxLength={20}
-          placeholder="Digite uma senha"
-          value={password}
-          onChangeText={text => setPassword(text)}
-          onSubmitEditing={() => {}}
-        />
-        <TouchableOpacity style={styles.buttonCadastro} onPress={handleSignIn}>
-          {loading ? (
-            <ActivityIndicator />
-          ) : (
-            <Text style={styles.buttonTxt}>Entrar</Text>
-          )}
-        </TouchableOpacity>
-        <View style={styles.loginView}>
-          <Text
-            style={styles.loginTxt}
-            onPress={() => navigation.navigate('SignUp')}>
-            Criar conta gratuita
-          </Text>
-          <Text
-            style={[styles.loginTxt, styles.loginWordTxt]}
-            onPress={() => navigation.navigate('SignUp')}>
-            Cadastrar
-          </Text>
-        </View>
+      <Text style={styles.labelTxt}>Email</Text>
+      <Input
+        autoFocus
+        blurOnSubmit={false}
+        placeholder="seu-email@email.com"
+        returnKeyType="next"
+        keyboardType="email-address"
+        value={email}
+        onChangeText={text => setEmail(text)}
+        onSubmitEditing={() => passwordRef.current.focus()}
+      />
+      <Text style={styles.labelTxt}>Senha</Text>
+      <Input
+        ref={passwordRef}
+        secureTextEntry
+        maxLength={20}
+        placeholder="Digite uma senha"
+        value={password}
+        onChangeText={text => setPassword(text)}
+        onSubmitEditing={() => {}}
+      />
+      <Button loading={loading} onPress={handleSignIn}>
+        Entrar
+      </Button>
+      <View style={styles.loginView}>
+        <Text
+          style={styles.loginTxt}
+          onPress={() => navigation.navigate('SignUp')}>
+          Criar conta gratuita
+        </Text>
+        <Text
+          style={[styles.loginTxt, styles.loginWordTxt]}
+          onPress={() => navigation.navigate('SignUp')}>
+          Cadastrar
+        </Text>
       </View>
     </Background>
   );
