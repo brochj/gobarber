@@ -1,47 +1,19 @@
-export function updateRequest(user) {
+export function updateProfileRequest(data) {
   return {
-    type: '@user/UPDATE_REQUEST',
-    payload: user,
+    type: '@user/UPDATE_PROFILE_REQUEST',
+    payload: { data },
   };
 }
 
-export function updateSuccess(user) {
+export function updateProfileSuccess(profile) {
   return {
-    type: '@user/UPDATE_SUCCESS',
-    payload: user,
+    type: '@user/UPDATE_PROFILE_SUCCESS',
+    payload: { profile },
   };
 }
 
-export function updateFailure() {
+export function updateProfileFailure() {
   return {
-    type: '@user/UPDATE_FAILURE',
-  };
-}
-
-export function changePhysicalActivity(level) {
-  return {
-    type: '@user/CHANGE_PHYSICAL_ACTIVITY',
-    payload: level,
-  };
-}
-
-export function changeCalorieIntake(calorie) {
-  return {
-    type: '@user/CHANGE_CALORIE_INTAKE',
-    payload: calorie,
-  };
-}
-
-export function changeObjective(objective) {
-  return {
-    type: '@user/CHANGE_OBJECTIVE',
-    payload: objective,
-  };
-}
-
-export function changeCalorieGoal(calorieGoal) {
-  return {
-    type: '@user/CHANGE_CALORIE_GOAL',
-    payload: calorieGoal,
+    type: '@user/UPDATE_PROFILE_FAILURE',
   };
 }

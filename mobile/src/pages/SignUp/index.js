@@ -18,7 +18,7 @@ export default function SignUp({ navigation }) {
   const loading = useSelector(state => state.auth.loading);
 
   function handleSignUp() {
-    dispatch(signUpRequest(email, password));
+    dispatch(signUpRequest(name, email, password));
   }
 
   const passwordRef = useRef();
