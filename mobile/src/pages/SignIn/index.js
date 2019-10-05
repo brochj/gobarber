@@ -47,6 +47,7 @@ export default function SignIn({ navigation }) {
             maxLength={20}
             placeholder="Digite uma senha"
             value={password}
+            returnKeyType="send"
             onChangeText={text => setPassword(text)}
             onSubmitEditing={handleSignIn}
           />
